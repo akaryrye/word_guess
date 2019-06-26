@@ -1,0 +1,56 @@
+body {
+    box-sizing: border-box;
+}
+
+#container {
+height: 100vh;
+width: 100vw;
+}
+
+.row {
+    width: 100%;
+}
+
+.column {
+
+}
+
+#header, #footer {
+    text-align: center;
+    height: 40px;
+    background-color: aqua;
+    padding-top: 0px;
+    margin: auto;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0px;
+    height: 22px;
+}
+
+#body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: calc(100vh - 62px);
+}
+
+#sidebar {
+    width: 20%;
+    background-color: aqua;
+    height: 100%;
+    
+}
+
+#main-content {
+    width: 80%;
+    background-color: #ddd4ee;
+    height: 100%; 
+    border: 2px solid black;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
