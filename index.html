@@ -7,49 +7,50 @@
 <head>
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 
-<body>
-    <div id="container">
+<body background="assets/img/congruent_pentagon.png">
+    <div id="container" >
         
         <div class="row" id="header">
-            <h1>Wat Number??</h1> 
+            <h1 id="header_title">Wat Number??</h1>
+            <img id="header_img" src="assets/img/numbers.png" />
         </div>
 
         <div class="row" id="body">
 
-            <div class="column" id="sidebar">
-                <p>sidebar</p>
-            </div>
+            <div class="column" id="sidebar"></div>
         
             <div class="column" id="main_content">
                 
-                
-                <div id="directions">
-                   <h2>Directions</h2>
-                   <ul>
-                       <li>Press SPACEBAR to Begin!</li>
-                       <li>Try to figure out the hidden word</li>
-                       <li>Guess letters by pressing the corresponding key</li>
-                       <li>Letters already guessed are displayed below</li>
-                       <li>Upon revealing the word, you will achieve self-actualization </li>
-                       <li>Press SPACEBAR to begin a new word.</li>
-                   </ul>
-                </div>
-                
-                <div id="current_word">
-                </div>
-                
-                <div id="game_stats">
-                    Guesses Remaining: <div id="guesses_left">20</div> 
-                    Letters Guessed:
-                    <div id="spent_letters"></div>
-                </div>
+                <div id="game">
 
-                
+                    <div id="directions">
+                    
+                    <h2><u>Directions</u></h2><br>
+                    <ul>
+                        <li>** Press SPACEBAR to Begin! **</li><br>
+                        <li>** Try to guess the hidden word **</li><br>
+                        <li>** Type the letters you would like to try **</li><br>
+                        <li>** Letters already guessed are displayed below **</li><br>
+                        <li>** Upon revealing the word, you will achieve self-actualization **</li><br>
+                        <li>** When you finish a word, press SPACEBAR again to begin a new word **</li>
+                    </ul>
+                    </div>
+                    
+                    <div id="current_word"></div>
+                    
+                    <div id="game_stats">
+                        Guesses Remaining: <div id="guesses_left"></div> 
+                        Letters Guessed:
+                        <div id="spent_letters"></div>
+                    </div>
+                    <div id="result"></div>
+
+                </div>
             </div>
-        
         </div>
 
         <div class="row" id="footer">
@@ -59,5 +60,6 @@
 
     </div>
 </body>
+
 <script type="text/javascript" src="assets/js/javascript.js"></script>
 </html>

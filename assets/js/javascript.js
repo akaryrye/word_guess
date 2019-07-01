@@ -1,18 +1,19 @@
 
 // global variables
-let words = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen'];
+let words = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty'];
 let guessesRemaining = 15;
 let lettersGuessed = [];
 let gameState = false;
 let wordInPlay = '';
 let hitCount = 0;
+const sound = new Audio();
 
 // element variables
 let currWord = document.getElementById("current_word");
 let spentLetters = document.getElementById("spent_letters");
+//let count = url("assets\media\Count.mp3");
 
 //loop through letters of word and place in separate divs
-
 function displayWord (word) {
     for (let i = 0; i < word.length; i++) {
         let letter = document.createElement("div");
@@ -26,6 +27,7 @@ function displayWord (word) {
     }  
 }
 
+// Display letters that have been guessed already
 function showGuessedLetter () {
     let spentLetter = document.createElement("div");
     spentLetter.classList.add("letter_spent");
@@ -33,20 +35,44 @@ function showGuessedLetter () {
     spentLetters.appendChild(spentLetter);
 }
 
+// Reset the game to prepare for another round
 function clearGame () {
     gameState = false;
-    wordInPlay = "";
+    //wordInPlay = "";
     lettersGuessed = [];
     hitCount = 0;
     guessesRemaining = 15;
-    currWord.innerHTML = "";
     spentLetters.innerHTML = "";
+    document.getElementById("guesses_left").textContent = guessesRemaining;
 }
 
-//Begin game and display letters in a hidden form
+function results() {
+    let newDiv = document.createElement('div');
+    if (hitCount === wordInPlay.length) {
+        newDiv.textContent = "You Won!!!";
+    } else {
+        newDiv.textContent = "Better Luck Next Time ...";
+    }
+    document.getElementById("result").appendChild(newDiv);
+}
+
+// Dynamically display possibilities on sidebar
+window.onload = function list() {
+    let sideList = document.getElementById("sidebar");
+    for (let i = 0; i < words.length; i++) {
+        let sideElement = document.createElement("div");
+        sideElement.classList.add("side_list");
+        sideElement.textContent = words[i];
+        sideList.appendChild(sideElement);
+    }
+}
+
+// Begin game and display letters in a hidden form
 document.addEventListener("keypress", function(e) {
     
     if (gameState === false && e.key === " ") {
+        document.getElementById("result").innerHTML = "";
+        currWord.innerHTML = "";
         wordInPlay = words[Math.floor(Math.random()*words.length)].toUpperCase();
         displayWord(wordInPlay);
         gameState = true;
@@ -65,11 +91,10 @@ document.addEventListener("keypress", function(e) {
                     hitCount++;
                 }
             }  
-        }
-
-    } else if (guessesRemaining === 0 || hitCount === wordInPlay.length ) {
-        if (gameState === true) {
+        } if (guessesRemaining === 0 || hitCount === wordInPlay.length) {
+            //playSound("count");
+            results();
             clearGame();
         }
-    }
-})
+    } 
+});
