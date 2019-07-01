@@ -11,6 +11,7 @@ const sound = new Audio();
 // element variables
 let currWord = document.getElementById("current_word");
 let spentLetters = document.getElementById("spent_letters");
+let count = document.getElementById("sound_clip");
 //let count = url("assets\media\Count.mp3");
 
 //loop through letters of word and place in separate divs
@@ -50,11 +51,14 @@ function results() {
     let newDiv = document.createElement('div');
     if (hitCount === wordInPlay.length) {
         newDiv.textContent = "You Won!!!";
+        count.play();
     } else {
         newDiv.textContent = "Better Luck Next Time ...";
     }
     document.getElementById("result").appendChild(newDiv);
 }
+
+count.play();
 
 // Dynamically display possibilities on sidebar
 window.onload = function list() {
@@ -90,9 +94,9 @@ document.addEventListener("keypress", function(e) {
                     document.getElementById("letter_" + i).style.opacity = ".7";
                     hitCount++;
                 }
-            }  
+            }
+
         } if (guessesRemaining === 0 || hitCount === wordInPlay.length) {
-            //playSound("count");
             results();
             clearGame();
         }
