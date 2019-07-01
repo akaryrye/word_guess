@@ -11,8 +11,7 @@ const sound = new Audio();
 // element variables
 let currWord = document.getElementById("current_word");
 let spentLetters = document.getElementById("spent_letters");
-let count = document.getElementById("sound_clip");
-//let count = url("assets\media\Count.mp3");
+let soundClip = document.getElementById("sound_clip");
 
 //loop through letters of word and place in separate divs
 function displayWord (word) {
@@ -51,14 +50,12 @@ function results() {
     let newDiv = document.createElement('div');
     if (hitCount === wordInPlay.length) {
         newDiv.textContent = "You Won!!!";
-        count.play();
+        soundClip.play();
     } else {
         newDiv.textContent = "Better Luck Next Time ...";
     }
     document.getElementById("result").appendChild(newDiv);
 }
-
-count.play();
 
 // Dynamically display possibilities on sidebar
 window.onload = function list() {
